@@ -34,11 +34,15 @@
  rysowanie.fillRect(0,0, plansza.width,plansza.height); 
  RysujChoinke();
 
- rysowanie.fillStyle = "rgb(150,150,150)";
- rysowanie.beginPath();
- rysowanie.arc(40, 80, 30, 0, 2 * Math.PI);
- rysowanie.fill();
- rysowanie.closePath(); 
+ function RysujPlatek(x_srodka, y_srodka, rozmiar, kolor) {
+    rysowanie.fillStyle = kolor;
+    rysowanie.beginPath();
+    rysowanie.arc(x_srodka, y_srodka, rozmiar, 0, 2 * Math.PI);
+    rysowanie.fill();
+    rysowanie.closePath();
+ } 
+
+ RysujPlatek(40, 80, 5, "rgb(150,150,150)");
 
 </script>
 </body> 
