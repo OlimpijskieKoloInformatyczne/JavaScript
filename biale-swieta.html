@@ -42,7 +42,28 @@
     rysowanie.closePath();
  } 
 
- RysujPlatek(40, 80, 5, "rgb(150,150,150)");
+ function LosujPlatek (numer_platka) {
+    platki_x[numer_platka] = 400*Math.random();
+    platki_y[numer_platka] = 100*Math.random();
+    platki_kolor[numer_platka] = 255*Math.random();;
+    platki_wielkosc[numer_platka] = 2 + 3*Math.random();
+ }
+
+ let platki_x=[], platki_y=[], platki_kolor=[], platki_wielkosc=[];
+ let liczba_platkow, i; 
+ let kolor; 
+ 
+ rysowanie.fillStyle = "rgb(0,0,60)";
+ rysowanie.fillRect(0,0, plansza.width,plansza.height); 
+ RysujChoinke();
+ liczba_platkow = 10;
+ for (i=0; i<liczba_platkow; ++i)
+    LosujPlatek (i);
+
+ for (i=0; i<liczba_platkow; ++i) {
+    kolor = "rgb(" + platki_kolor[i] + "," + platki_kolor[i] + "," + platki_kolor[i] + ")";
+    RysujPlatek(platki_x[i], platki_y[i], platki_wielkosc[i], kolor);
+ }
 
 </script>
 </body> 
