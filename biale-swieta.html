@@ -46,11 +46,16 @@
 //Math.random() - generuje losowa liczbe od 0 do 1
     platki_x[numer_platka] = 400*Math.random(); //losowa od 0 do 400
     platki_y[numer_platka] = 100*Math.random(); //losowa od 0 do 100
-    platki_kolor[numer_platka] = 255*Math.random(); //losowa od 0 do 255
+    platki_kolor[numer_platka] = 100*Math.random(); //losowa od 0 do 255
     platki_wielkosc[numer_platka] = 2 + 3*Math.random(); // losowa od 2 do 5
- }
+    platki_predkosc_y[numer_platka] = 0.1 + Math.random(); //od 0.1 do 1.1
+    platki_predkosc_zmiany_wielkosci[numer_platka] = 0.001; 
+    platki_predkosc_zmiany_koloru[numer_platka] = 0.5; //szybkosc pojasniania
+}
 
  let platki_x=[], platki_y=[], platki_kolor=[], platki_wielkosc=[];
+ let platki_predkosc_y=[], platki_predkosc_zmiany_koloru=[];
+ let platki_predkosc_zmiany_wielkosci = [];
  let liczba_platkow, i; 
  
  liczba_platkow = 30;
@@ -67,9 +72,15 @@
        kolor = "rgb(" + platki_kolor[i] + "," + 
        platki_kolor[i] + "," + platki_kolor[i] + ")";
        RysujPlatek(platki_x[i], platki_y[i], platki_wielkosc[i], kolor);
-       platki_y[i] = platki_y[i] + 1;
-       if (platki_y[i] > plansza.height) 
-           LosujPlatek(i); 
+       platki_kolor[i] = platki_kolor[i] + platki_predkosc_zmiany_koloru[i];
+        if (platki_kolor[i]>255)
+           platki_kolor[i] = 255;
+        platki_wielkosc[i] = platki_wielkosc[i] + platki_predkosc_zmiany_wielkosci[i];
+        if (platki_wielkosc[i]>10)
+        platki_wielkosc[i] = 10;
+        platki_y[i] = platki_y[i] + platki_predkosc_y[i];
+        if (platki_y[i] > 600)
+           LosujPlatek(i);   
     }
  }
  setInterval(Animacja, 10); //co 10ms czyli 100 razy na sekunde wywoluj funkcje Animacja()
