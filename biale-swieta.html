@@ -16,8 +16,13 @@
  rysowanie.fillStyle = "rgb(0,0,60)";
  rysowanie.fillRect(0,0, plansza.width,plansza.height); 
 
- rysowanie.fillStyle = "rgb(0,255,00)";
- rysowanie.fillRect(50,100, 150,300); 
+ rysowanie.beginPath();
+ rysowanie.moveTo(90, 500);
+ rysowanie.lineTo(310, 500);
+ rysowanie.lineTo(200, 250);
+ rysowanie.fillStyle = "rgb(0,115,0)";
+ rysowanie.fill();
+ rysowanie.closePath();
 
 </script>
 </body> 
