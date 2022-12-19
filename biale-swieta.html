@@ -13,9 +13,6 @@
  plansza = document.getElementById("plansza_canvas");
  rysowanie = plansza.getContext("2d");  
 
- rysowanie.fillStyle = "rgb(0,0,60)";
- rysowanie.fillRect(0,0, plansza.width,plansza.height); 
-
  //trojkat ktory ma podstawe rownolegla do osi X
  function RysujTrojkat(x_lewy, x_prawy, y_dol, y_gora, kolor) {
     rysowanie.beginPath();
@@ -27,9 +24,21 @@
     rysowanie.closePath();
  }
 
+ function RysujChoinke() {
     RysujTrojkat(50, 350, 500, 250, "rgb(0,115,0)");
     RysujTrojkat(60, 340, 400, 150, "rgb(0,185,0)");
     RysujTrojkat(90, 310, 300, 100, "rgb(0,255,0)");
+ }
+
+ rysowanie.fillStyle = "rgb(0,0,60)";
+ rysowanie.fillRect(0,0, plansza.width,plansza.height); 
+ RysujChoinke();
+
+ rysowanie.fillStyle = "rgb(150,150,150)";
+ rysowanie.beginPath();
+ rysowanie.arc(40, 80, 30, 0, 2 * Math.PI);
+ rysowanie.fill();
+ rysowanie.closePath(); 
 
 </script>
 </body> 
