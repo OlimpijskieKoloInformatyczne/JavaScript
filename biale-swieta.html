@@ -30,10 +30,6 @@
     RysujTrojkat(90, 310, 300, 100, "rgb(0,255,0)");
  }
 
- rysowanie.fillStyle = "rgb(0,0,60)";
- rysowanie.fillRect(0,0, plansza.width,plansza.height); 
- RysujChoinke();
-
  function RysujPlatek(x_srodka, y_srodka, rozmiar, kolor) {
     rysowanie.fillStyle = kolor;
     rysowanie.beginPath();
@@ -58,7 +54,7 @@
  let platki_predkosc_zmiany_wielkosci = [];
  let liczba_platkow, i; 
  
- liczba_platkow = 30;
+ liczba_platkow = 200;
  for (i=0; i<liczba_platkow; ++i)
     LosujPlatek (i);
 
@@ -77,10 +73,11 @@
            platki_kolor[i] = 255;
         platki_wielkosc[i] = platki_wielkosc[i] + platki_predkosc_zmiany_wielkosci[i];
         if (platki_wielkosc[i]>10)
-        platki_wielkosc[i] = 10;
+           platki_wielkosc[i] = 10;
         platki_y[i] = platki_y[i] + platki_predkosc_y[i];
-        if (platki_y[i] > 600)
+        if (platki_y[i] > plansza.height)
            LosujPlatek(i);   
+        platki_x[i] = platki_x[i] + -1.5+3*Math.random();
     }
  }
  setInterval(Animacja, 10); //co 10ms czyli 100 razy na sekunde wywoluj funkcje Animacja()
