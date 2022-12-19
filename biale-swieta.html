@@ -16,13 +16,20 @@
  rysowanie.fillStyle = "rgb(0,0,60)";
  rysowanie.fillRect(0,0, plansza.width,plansza.height); 
 
- rysowanie.beginPath();
- rysowanie.moveTo(90, 500);
- rysowanie.lineTo(310, 500);
- rysowanie.lineTo(200, 250);
- rysowanie.fillStyle = "rgb(0,115,0)";
- rysowanie.fill();
- rysowanie.closePath();
+ //trojkat ktory ma podstawe rownolegla do osi X
+ function RysujTrojkat(x_lewy, x_prawy, y_dol, y_gora, kolor) {
+    rysowanie.beginPath();
+    rysowanie.moveTo(x_lewy, y_dol);
+    rysowanie.lineTo(x_prawy, y_dol);
+    rysowanie.lineTo((x_lewy+x_prawy)/2, y_gora);
+    rysowanie.fillStyle = kolor;
+    rysowanie.fill();
+    rysowanie.closePath();
+ }
+
+    RysujTrojkat(50, 350, 500, 250, "rgb(0,115,0)");
+    RysujTrojkat(60, 340, 400, 150, "rgb(0,185,0)");
+    RysujTrojkat(90, 310, 300, 100, "rgb(0,255,0)");
 
 </script>
 </body> 
