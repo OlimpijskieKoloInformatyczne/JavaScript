@@ -52,20 +52,27 @@
 
  let platki_x=[], platki_y=[], platki_kolor=[], platki_wielkosc=[];
  let liczba_platkow, i; 
- let kolor; 
  
- rysowanie.fillStyle = "rgb(0,0,60)";
- rysowanie.fillRect(0,0, plansza.width,plansza.height); 
- RysujChoinke();
  liczba_platkow = 30;
  for (i=0; i<liczba_platkow; ++i)
     LosujPlatek (i);
 
- for (i=0; i<liczba_platkow; ++i) {
-    //kolor = "rgb(146,146,146)";
-    kolor = "rgb(" + platki_kolor[i] + "," + platki_kolor[i] + "," + platki_kolor[i] + ")";
-    RysujPlatek(platki_x[i], platki_y[i], platki_wielkosc[i], kolor);
+ function Animacja() {
+    let kolor; 
+    rysowanie.fillStyle = "rgb(0,0,60)";
+    rysowanie.fillRect(0,0, plansza.width,plansza.height); 
+    RysujChoinke();
+    for (i=0; i<liczba_platkow; ++i) {
+       //kolor = "rgb(146,146,146)";
+       kolor = "rgb(" + platki_kolor[i] + "," + 
+       platki_kolor[i] + "," + platki_kolor[i] + ")";
+       RysujPlatek(platki_x[i], platki_y[i], platki_wielkosc[i], kolor);
+       platki_y[i] = platki_y[i] + 1;
+       if (platki_y[i] > plansza.height) 
+           LosujPlatek(i); 
+    }
  }
+ setInterval(Animacja, 10); //co 10ms czyli 100 razy na sekunde wywoluj funkcje Animacja()
 
 </script>
 </body> 
